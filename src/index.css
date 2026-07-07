@@ -1,111 +1,155 @@
-:root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+@import "tailwindcss";
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
+@theme {
+  --font-sans: "Geist", system-ui, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, monospace;
+}
 
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
 
-  @media (max-width: 1024px) {
-    font-size: 16px;
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    background: #09090b;
+    font-family: "Geist", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  button,
+  input,
+  textarea {
+    font: inherit;
+  }
+
+  img,
+  svg {
+    display: block;
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
+@layer utilities {
+  .portfolio {
+    --bg: #09090b;
+    --fg: #fafafa;
+    --surface: #101013;
+    --chip: #18181b;
+    --border: #1f1f23;
+    --border2: #27272a;
+    --borderh: #3f3f46;
+    --navbg: #09090b;
+    --muted: #a1a1aa;
+    --muted2: #71717a;
+    --muted3: #52525b;
+    --btnh: #e4e4e7;
+    --grid: rgba(255, 255, 255, 0.035);
+    --ring: rgba(250, 250, 250, 0.06);
   }
 
-  #social .button-icon {
-    filter: invert(1) brightness(2);
+  .portfolio[data-theme="amoled"] {
+    --bg: #000000;
+    --surface: #050506;
+    --chip: #0e0e10;
+    --border: #19191b;
+    --border2: #232326;
+    --navbg: #000000;
   }
-}
 
-#root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-}
-
-h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 500;
-  color: var(--text-h);
-}
-
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
+  .portfolio[data-theme="claro"] {
+    --bg: #ffffff;
+    --fg: #09090b;
+    --surface: #fafafa;
+    --chip: #f4f4f5;
+    --border: #e9e9ec;
+    --border2: #d9d9de;
+    --borderh: #a1a1aa;
+    --navbg: #ffffff;
+    --muted: #52525b;
+    --muted2: #6b6b74;
+    --muted3: #6b6b74;
+    --btnh: #27272a;
+    --grid: rgba(9, 9, 11, 0.05);
+    --ring: rgba(9, 9, 11, 0.08);
   }
-}
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
+
+  .portfolio[data-theme="liquido"] {
+    --bg: #0c0e1a;
+    --surface: rgba(255, 255, 255, 0.07);
+    --chip: rgba(255, 255, 255, 0.12);
+    --border: rgba(255, 255, 255, 0.16);
+    --border2: rgba(255, 255, 255, 0.22);
+    --borderh: rgba(255, 255, 255, 0.4);
+    --navbg: rgba(16, 18, 32, 0.4);
+    --grid: rgba(255, 255, 255, 0.04);
+    --ring: rgba(255, 255, 255, 0.16);
+    --muted: #c3c6d9;
+    --muted2: #9a9fb8;
+    --muted3: rgba(255, 255, 255, 0.48);
+
+    background:
+      radial-gradient(900px 620px at 82% -8%, rgba(99, 102, 241, 0.5), transparent 60%),
+      radial-gradient(800px 600px at -8% 22%, rgba(16, 185, 129, 0.36), transparent 55%),
+      radial-gradient(700px 550px at 30% 108%, rgba(236, 72, 153, 0.3), transparent 55%),
+      radial-gradient(900px 700px at 98% 78%, rgba(34, 211, 238, 0.32), transparent 55%),
+      #0c0e1a !important;
+    background-attachment: fixed !important;
   }
-}
-p {
-  margin: 0;
-}
 
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
-}
+  .portfolio::selection {
+    background: rgba(250, 250, 250, 0.2);
+  }
 
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
+  .portfolio[data-theme="claro"] ::selection {
+    background: rgba(9, 9, 11, 0.12);
+  }
+
+  .portfolio[data-theme="liquido"] [data-glass] {
+    background: linear-gradient(160deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.05) 45%, rgba(255, 255, 255, 0.09)) !important;
+    border-color: rgba(255, 255, 255, 0.24) !important;
+    box-shadow:
+      inset 0 1px 1px rgba(255, 255, 255, 0.3),
+      inset 0 -1px 1px rgba(255, 255, 255, 0.06),
+      0 16px 48px rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(28px) saturate(1.8);
+    -webkit-backdrop-filter: blur(28px) saturate(1.8);
+  }
+
+  .portfolio[data-theme="liquido"] [data-glass="card"] {
+    border-radius: 24px !important;
+  }
+
+  .portfolio[data-theme="liquido"] [data-glass="menu"] {
+    border-radius: 16px !important;
+  }
+
+  .portfolio[data-theme="liquido"] [data-screen-label="Nav"] {
+    backdrop-filter: blur(30px) saturate(1.8) !important;
+    -webkit-backdrop-filter: blur(30px) saturate(1.8) !important;
+  }
+
+  @keyframes reveal-up {
+    from {
+      opacity: 0;
+      transform: translateY(28px);
+    }
+
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @supports (animation-timeline: view()) {
+    [data-reveal="true"] {
+      animation: reveal-up linear both;
+      animation-timeline: view();
+      animation-range: entry 5% entry 35%;
+    }
+  }
 }
