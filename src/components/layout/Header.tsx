@@ -1,6 +1,8 @@
+import { useEffect, useRef } from "react";
 import { NAV_SECTIONS } from "@/data/portfolio";
 import { cn } from "@/lib/cn";
 import { sectionShell } from "@/lib/styles";
+import type { ThemeOrigin } from "@/hooks/usePortfolioTheme";
 import type { SectionId, Theme } from "@/types/portfolio";
 import { ButtonLink } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
@@ -12,7 +14,7 @@ type HeaderProps = {
   menuOpen: boolean;
   themeMenuOpen: boolean;
   onThemeToggle: () => void;
-  onThemeSelect: (theme: Theme) => void;
+  onThemeSelect: (theme: Theme, origin: ThemeOrigin) => void;
   onMenuToggle: () => void;
   onMenuClose: () => void;
 };
@@ -30,8 +32,33 @@ export function Header({
   onMenuToggle,
   onMenuClose,
 }: HeaderProps) {
+  const headerRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    if (!menuOpen && !themeMenuOpen) return;
+
+    function handlePointerDown(event: PointerEvent) {
+      if (!headerRef.current?.contains(event.target as Node)) {
+        onMenuClose();
+      }
+    }
+
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key === "Escape") onMenuClose();
+    }
+
+    document.addEventListener("pointerdown", handlePointerDown);
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("pointerdown", handlePointerDown);
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [menuOpen, themeMenuOpen, onMenuClose]);
+
   return (
     <header
+      ref={headerRef}
       className="fixed inset-x-0 top-0 z-50 border-b border-[var(--border)] bg-[var(--navbg)] backdrop-blur-xl"
       data-screen-label="Nav"
     >
