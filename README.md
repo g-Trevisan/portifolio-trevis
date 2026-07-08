@@ -1,81 +1,135 @@
-# React + TypeScript + Vite
+# Portfólio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Portfólio pessoal desenvolvido com React, TypeScript, Vite e Tailwind CSS. O projeto apresenta perfil profissional, resumo sobre a trajetória, projetos, habilidades, links de contato, troca de tema e botão flutuante para WhatsApp.
 
-Currently, two official plugins are available:
+## Tecnologias
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- React 19
+- TypeScript
+- Vite
+- Tailwind CSS 4
+- Lucide React
+- ESLint
+- React Compiler
 
-## React Compiler
+## Como rodar
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+Instale as dependências:
 
-Note: This will impact Vite dev & build performances.
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Inicie o servidor de desenvolvimento:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+npm run dev
 ```
-Unknown command: "runecho"
 
-To see a list of supported npm commands, run:
-  npm help
+Gere a versão de produção:
+
+```bash
+npm run build
+```
+
+Visualize o build localmente:
+
+```bash
+npm run preview
+```
+
+Execute a verificação de lint:
+
+```bash
+npm run lint
+```
+
+## Hospedagem e domínio
+
+O projeto está hospedado na Vercel e usa o domínio personalizado `g-trevisan.com.br`.
+
+- Hospedagem: Vercel
+- Domínio: `g-trevisan.com.br`
+- Registro do domínio: Registro.br
+- URL de produção: `https://g-trevisan.com.br`
+
+## Estrutura do projeto
+
+```text
+.
+├── public/
+│   └── favicons e ícones públicos
+├── src/
+│   ├── assets/
+│   │   └── portfolio/
+│   │       └── imagens usadas no perfil e nos projetos
+│   ├── components/
+│   │   ├── layout/
+│   │   │   └── Header, Footer e botão de WhatsApp
+│   │   ├── sections/
+│   │   │   └── Hero, About, Projects, Skills e Contact
+│   │   └── ui/
+│   │       └── componentes reutilizáveis de interface
+│   ├── data/
+│   │   └── portfolio.ts
+│   ├── hooks/
+│   │   └── hooks de navegação, tema, menu e seção ativa
+│   ├── lib/
+│   │   └── utilitários de tema, estilos e classes
+│   ├── types/
+│   │   └── tipos compartilhados do portfólio
+│   ├── App.tsx
+│   ├── index.css
+│   └── main.tsx
+├── index.html
+├── vite.config.ts
+└── package.json
+```
+
+## Onde alterar o conteúdo
+
+A maior parte do conteúdo editável fica centralizada em `src/data/portfolio.ts`.
+
+- `PROFILE`: nome, localização e imagem principal.
+- `ABOUT_PARAGRAPHS`: textos da seção "Sobre".
+- `PROJECTS`: projetos exibidos, imagens, descrições, links e tags.
+- `SKILL_GROUPS`: grupos de habilidades e tecnologias.
+- `CONTACT_LINKS`: e-mail, GitHub, LinkedIn, Instagram e outros contatos.
+- `WHATSAPP_URL`: link usado no botão flutuante de WhatsApp.
+- `THEME_OPTIONS`: opções exibidas no seletor de tema.
+- `NAV_SECTIONS` e `SECTION_IDS`: seções usadas pela navegação e pelo destaque de seção ativa.
+
+As imagens importadas nesse arquivo ficam em `src/assets/portfolio/`.
+
+## Temas e estilos
+
+Os temas disponíveis são:
+
+- `escuro`
+- `amoled`
+- `claro`
+- `liquido`
+
+As cores, variáveis CSS, animações e ajustes responsivos ficam em `src/index.css`. A configuração do tema padrão e da chave usada no `localStorage` fica em `src/lib/theme.ts`.
+
+O projeto usa Tailwind CSS via plugin do Vite e alias `@` apontando para `src`, configurado em `vite.config.ts`.
+
+## Componentes principais
+
+- `src/App.tsx`: monta a página, aplica o tema atual e organiza as seções.
+- `src/components/layout/Header.tsx`: navegação, menu mobile e seletor de tema.
+- `src/components/layout/WhatsAppButton.tsx`: botão flutuante de contato.
+- `src/components/sections/Hero.tsx`: primeira dobra do portfólio.
+- `src/components/sections/About.tsx`: resumo profissional.
+- `src/components/sections/Projects.tsx`: cards de projetos.
+- `src/components/sections/Skills.tsx`: grupos de habilidades.
+- `src/components/sections/Contact.tsx`: links de contato.
+
+## Scripts disponíveis
+
+| Script            | Descrição                                    |
+| ----------------- | -------------------------------------------- |
+| `npm run dev`     | Inicia o Vite em modo desenvolvimento.       |
+| `npm run build`   | Executa `tsc -b` e gera o build em `dist/`.  |
+| `npm run lint`    | Roda o ESLint no projeto.                    |
+| `npm run preview` | Serve localmente a versão gerada em `dist/`. |
