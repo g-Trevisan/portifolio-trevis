@@ -21,6 +21,10 @@ export function About() {
           <img
             src={PROFILE.image}
             alt="Foto de Gustavo Trevisan"
+            width={64}
+            height={64}
+            loading="lazy"
+            decoding="async"
             className="size-16 shrink-0 rounded-full border border-[var(--border2)] object-cover object-[50%_20%]"
           />
           <div className="flex flex-col gap-0.5">

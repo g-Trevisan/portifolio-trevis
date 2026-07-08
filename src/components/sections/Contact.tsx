@@ -14,6 +14,8 @@ export function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState("");
   const [messageLength, setMessageLength] = useState(0);
+  const messageCounterId = "contact-message-counter";
+  const formErrorId = "contact-form-error";
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -21,7 +23,7 @@ export function Contact() {
     const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
 
     if (!accessKey) {
-      setError("O envio ainda nao esta configurado.");
+      setError("O envio ainda não está configurado.");
       return;
     }
 
@@ -29,10 +31,11 @@ export function Contact() {
     const formData = new FormData(form);
 
     formData.append("access_key", accessKey);
-    formData.append("subject", "Nova mensagem pelo portfolio");
+    formData.append("subject", "Nova mensagem pelo portfólio");
 
     setIsSubmitting(true);
     setError("");
+    setSubmitted(false);
 
     try {
       const response = await fetch("https://api.web3forms.com/submit", {
@@ -49,7 +52,7 @@ export function Contact() {
       setMessageLength(0);
     } catch {
       setError(
-        "Nao foi possivel enviar a mensagem agora. Tente novamente ou chame no WhatsApp.",
+        "Não foi possível enviar a mensagem agora. Tente novamente ou chame no WhatsApp.",
       );
     } finally {
       setIsSubmitting(false);
@@ -79,6 +82,7 @@ export function Contact() {
                   href={link.href}
                   className="inline-flex w-fit items-center gap-2.5 text-[15px] text-[var(--muted)] transition-colors hover:text-[var(--fg)]"
                   key={link.href}
+                  aria-label={`Abrir ${link.label} em nova aba`}
                 >
                   <Icon name={link.icon} size={16} />
                   {link.label}
@@ -99,7 +103,11 @@ export function Contact() {
 
         <Card className="p-7 max-[560px]:p-[22px]">
           {submitted ? (
-            <div className="flex flex-col items-center gap-3.5 px-6 py-12 text-center">
+            <div
+              className="flex flex-col items-center gap-3.5 px-6 py-12 text-center"
+              role="status"
+              aria-live="polite"
+            >
               <Icon name="check" size={40} className="text-[var(--accent)]" />
               <strong className="text-lg font-semibold">
                 Mensagem enviada!
@@ -118,13 +126,19 @@ export function Contact() {
               </Button>
             </div>
           ) : (
-            <form className="flex flex-col gap-[18px]" onSubmit={handleSubmit}>
+            <form
+              className="flex flex-col gap-[18px]"
+              onSubmit={handleSubmit}
+              aria-busy={isSubmitting}
+              aria-describedby={error ? formErrorId : undefined}
+            >
               <input
                 type="checkbox"
                 name="botcheck"
                 className="hidden"
                 tabIndex={-1}
                 autoComplete="off"
+                aria-hidden="true"
               />
               <div className="grid grid-cols-2 gap-4 max-[560px]:grid-cols-1">
                 <TextInputField
@@ -134,6 +148,7 @@ export function Contact() {
                   name="name"
                   required
                   placeholder="Seu nome"
+                  autoComplete="name"
                   disabled={isSubmitting}
                 />
                 <TextInputField
@@ -143,12 +158,14 @@ export function Contact() {
                   name="email"
                   required
                   placeholder="voce@email.com"
+                  autoComplete="email"
                   disabled={isSubmitting}
                 />
               </div>
 
               <TextareaField
                 label="Mensagem"
+                metaId={messageCounterId}
                 meta={
                   messageLength > 0
                     ? `${messageLength} caractere${messageLength === 1 ? "" : "s"}`
@@ -157,6 +174,7 @@ export function Contact() {
                 name="message"
                 required
                 rows={5}
+                aria-describedby={messageCounterId}
                 onInput={(event) =>
                   setMessageLength(event.currentTarget.value.length)
                 }
@@ -164,7 +182,11 @@ export function Contact() {
                 disabled={isSubmitting}
               />
 
-              {error ? <p className="text-sm text-red-500">{error}</p> : null}
+              {error ? (
+                <p id={formErrorId} className="text-sm text-[var(--danger)]" role="alert">
+                  {error}
+                </p>
+              ) : null}
 
               <Button
                 type="submit"

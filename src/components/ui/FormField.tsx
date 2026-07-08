@@ -14,6 +14,7 @@ type TextInputFieldProps = InputHTMLAttributes<HTMLInputElement> & {
 type TextareaFieldProps = TextareaHTMLAttributes<HTMLTextAreaElement> & {
   label: string
   meta?: ReactNode
+  metaId?: string
 }
 
 export function TextInputField({ label, icon, className, ...props }: TextInputFieldProps) {
@@ -28,12 +29,12 @@ export function TextInputField({ label, icon, className, ...props }: TextInputFi
   )
 }
 
-export function TextareaField({ label, meta, className, ...props }: TextareaFieldProps) {
+export function TextareaField({ label, meta, metaId, className, ...props }: TextareaFieldProps) {
   return (
     <label className="flex flex-col gap-1.5 text-[13.5px] font-medium">
       <span className="flex items-baseline justify-between gap-3">
         {label}
-        <span className="min-h-4 text-xs font-normal text-[var(--muted2)]">{meta}</span>
+        <span id={metaId} className="min-h-4 text-xs font-normal text-[var(--muted2)]">{meta}</span>
       </span>
       <textarea className={cn(controlClass, 'min-h-[142px] resize-y px-3.5 py-3 leading-[1.6]', className)} {...props} />
     </label>

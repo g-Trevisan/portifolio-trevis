@@ -17,6 +17,8 @@ function ProjectCard({ project }: { project: Project }) {
       <img
         src={project.image}
         alt={project.alt}
+        loading="lazy"
+        decoding="async"
         className="block h-60 w-full border-b border-[var(--border)] object-cover object-top max-[560px]:h-[210px]"
       />
 
@@ -35,11 +37,19 @@ function ProjectCard({ project }: { project: Project }) {
         </div>
 
         <div className="mt-auto flex flex-wrap items-center gap-5 pt-1 text-sm font-medium">
-          <ExternalLink href={project.liveUrl} className="inline-flex items-center gap-1.5 text-[var(--fg)] transition-colors hover:text-[var(--accent)]">
+          <ExternalLink
+            href={project.liveUrl}
+            className="inline-flex items-center gap-1.5 text-[var(--fg)] transition-colors hover:text-[var(--accent)]"
+            aria-label={`Abrir projeto ${project.title} em nova aba`}
+          >
             Ver projeto
             <Icon name="external" size={14} />
           </ExternalLink>
-          <ExternalLink href={project.codeUrl} className="inline-flex items-center gap-1.5 text-[var(--muted)] transition-colors hover:text-[var(--accent)]">
+          <ExternalLink
+            href={project.codeUrl}
+            className="inline-flex items-center gap-1.5 text-[var(--muted)] transition-colors hover:text-[var(--accent)]"
+            aria-label={`Abrir código de ${project.title} em nova aba`}
+          >
             <Icon name="github" size={14} />
             Código
           </ExternalLink>

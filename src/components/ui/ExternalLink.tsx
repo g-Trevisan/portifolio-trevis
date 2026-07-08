@@ -5,9 +5,9 @@ type ExternalLinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
   children: ReactNode
 }
 
-export function ExternalLink({ href, children, ...props }: ExternalLinkProps) {
+export function ExternalLink({ href, children, rel = 'noopener noreferrer', ...props }: ExternalLinkProps) {
   return (
-    <a href={href} target="_blank" rel="noreferrer" {...props}>
+    <a href={href} target="_blank" rel={rel} {...props}>
       {children}
     </a>
   )
