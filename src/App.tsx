@@ -25,6 +25,13 @@ function App() {
       data-theme={theme}
       style={{ "--accent": ACCENT_COLOR } as CSSProperties}
     >
+      <a
+        href="#conteudo"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-[var(--fg)] focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-[var(--bg)] focus:outline-2 focus:outline-offset-2 focus:outline-[var(--accent)]"
+      >
+        Pular para o conteúdo
+      </a>
+
       {theme === "liquido" && (
         <div
           ref={spotlightRef}
@@ -47,7 +54,7 @@ function App() {
         onMenuClose={closeMenus}
       />
 
-      <main>
+      <main id="conteudo">
         <Hero />
         <About />
         <Projects />

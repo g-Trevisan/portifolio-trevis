@@ -48,8 +48,10 @@ export function ThemeMenu({ theme, open, onToggle, onSelect }: ThemeMenuProps) {
         className={cn(iconButton, "gap-1")}
         type="button"
         onClick={onToggle}
-        aria-label="Escolher tema"
+        aria-label={`Tema atual: ${selectedTheme.label}. Escolher tema`}
         aria-expanded={open}
+        aria-haspopup="menu"
+        aria-controls="menu-temas"
       >
         <span className="relative inline-flex size-[15px] items-center justify-center">
           {exitingTheme && (
@@ -72,6 +74,9 @@ export function ThemeMenu({ theme, open, onToggle, onSelect }: ThemeMenuProps) {
 
       {open && (
         <div
+          id="menu-temas"
+          role="menu"
+          aria-label="Opções de tema"
           data-glass="menu"
           data-theme-menu="true"
           className="animate-dropdown-down isolate absolute right-0 top-[calc(100%+6px)] z-[70] flex min-w-40 origin-top flex-col gap-0.5 overflow-hidden rounded-[10px] border border-[var(--border2)] bg-[var(--surface)] p-1.5 shadow-[0_12px_32px_rgba(0,0,0,.4)]"
@@ -81,6 +86,8 @@ export function ThemeMenu({ theme, open, onToggle, onSelect }: ThemeMenuProps) {
               className="flex items-center gap-2.5 rounded-[7px] border-0 bg-transparent px-2.5 py-2 text-left text-[13.5px] font-medium text-[var(--fg)] transition-colors hover:bg-[var(--chip)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)]"
               key={option.id}
               type="button"
+              role="menuitemradio"
+              aria-checked={theme === option.id}
               onClick={(event) =>
                 onSelect(option.id, { x: event.clientX, y: event.clientY })
               }

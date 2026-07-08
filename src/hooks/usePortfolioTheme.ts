@@ -22,6 +22,10 @@ function getCircleKeyframes(origin: ThemeOrigin): [string, string] {
   return [`circle(0px at ${x}px ${y}px)`, `circle(${radius}px at ${x}px ${y}px)`];
 }
 
+function prefersReducedMotion() {
+  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+}
+
 export function usePortfolioTheme() {
   const [theme, setTheme] = useState<Theme>(getInitialTheme);
 
@@ -33,7 +37,7 @@ export function usePortfolioTheme() {
       setTheme(nextTheme);
     };
 
-    if (!document.startViewTransition) {
+    if (!document.startViewTransition || prefersReducedMotion()) {
       applyTheme();
       return;
     }

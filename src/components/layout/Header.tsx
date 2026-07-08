@@ -73,12 +73,17 @@ export function Header({
           href="#inicio"
           className="inline-flex items-center gap-2.5 whitespace-nowrap text-[15px] font-semibold tracking-normal text-[var(--fg)] max-[560px]:text-sm"
           onClick={onMenuClose}
+          aria-label="Ir para o início do portfólio de Gustavo Trevisan"
+          aria-current={activeSection === "inicio" ? "location" : undefined}
         >
-          <span className="inline-flex size-7 items-center justify-center rounded-lg bg-[var(--fg)] font-mono text-[13px] font-medium text-[var(--bg)]">
+          <span
+            className="inline-flex size-7 items-center justify-center rounded-lg bg-[var(--fg)] font-mono text-[13px] font-medium text-[var(--bg)]"
+            aria-hidden="true"
+          >
             {"{`}"}
           </span>
           <span>
-            g-trevisan<span className="text-[var(--muted2)]">.dev</span>
+            g-trevisan<span className="text-[var(--muted2)]">.com.br</span>
           </span>
         </a>
 
@@ -93,6 +98,7 @@ export function Header({
                   : "text-[var(--muted)]",
               )}
               key={section.id}
+              aria-current={activeSection === section.id ? "location" : undefined}
             >
               {section.label}
             </a>
@@ -113,6 +119,7 @@ export function Header({
             onClick={onMenuToggle}
             aria-label={menuOpen ? "Fechar menu" : "Abrir menu"}
             aria-expanded={menuOpen}
+            aria-controls="menu-mobile"
           >
             <Icon name={menuOpen ? "x" : "menu"} size={17} />
           </button>
@@ -129,18 +136,23 @@ export function Header({
       </nav>
 
       {menuOpen && (
-        <div className="animate-mobile-menu-down flex origin-top flex-col gap-0.5 overflow-hidden border-t border-[var(--border)] bg-[var(--bg)] px-6 py-3 max-[560px]:px-5">
+        <nav
+          id="menu-mobile"
+          className="animate-mobile-menu-down flex origin-top flex-col gap-0.5 overflow-hidden border-t border-[var(--border)] bg-[var(--bg)] px-6 py-3 max-[560px]:px-5"
+          aria-label="Menu mobile"
+        >
           {NAV_SECTIONS.map((section) => (
             <a
               href={`#${section.id}`}
               className="px-1 py-3 text-[15px] text-[var(--muted)] transition-colors hover:text-[var(--fg)]"
               key={section.id}
               onClick={onMenuClose}
+              aria-current={activeSection === section.id ? "location" : undefined}
             >
               {section.label}
             </a>
           ))}
-        </div>
+        </nav>
       )}
     </header>
   );
