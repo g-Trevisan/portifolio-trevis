@@ -19,16 +19,16 @@ function ProjectCard({ project }: { project: Project }) {
         alt={project.alt}
         loading="lazy"
         decoding="async"
-        className="block h-60 w-full border-b border-[var(--border)] object-cover object-top max-[560px]:h-[210px]"
+        className="block h-60 w-full border-b border-[var(--border)] object-cover object-top max-[560px]:h-[180px]"
       />
 
-      <div className="flex flex-1 flex-col gap-3.5 p-6">
+      <div className="flex flex-1 flex-col gap-3.5 p-6 max-[560px]:gap-3 max-[560px]:p-5">
         <div className="flex items-center justify-between gap-3">
-          <h3 className="m-0 text-xl font-semibold tracking-normal">{project.title}</h3>
+          <h3 className="m-0 text-xl font-semibold tracking-normal max-[560px]:text-lg">{project.title}</h3>
           <Icon name="external" size={17} className="shrink-0 text-[var(--muted2)]" />
         </div>
 
-        <p className="m-0 text-[14.5px] leading-[1.6] text-[var(--muted)]">{project.description}</p>
+        <p className="m-0 text-[14.5px] leading-[1.6] text-[var(--muted)] max-[560px]:text-sm max-[560px]:leading-[1.55]">{project.description}</p>
 
         <div className="flex flex-wrap gap-2">
           {project.tags.map((tag) => (

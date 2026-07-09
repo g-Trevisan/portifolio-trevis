@@ -16,8 +16,8 @@ export function Tag({ tag, variant = 'pill' }: TagProps) {
       className={cn(
         'inline-flex max-w-full items-center whitespace-nowrap border border-[var(--border2)] bg-[var(--chip)] font-medium text-[var(--fg)]',
         isPill
-          ? 'gap-1.5 rounded-full px-3 py-1 font-mono text-xs text-[var(--muted)]'
-          : 'gap-2 rounded-lg px-3.5 py-2 text-[13.5px]',
+          ? 'gap-1.5 rounded-full px-3 py-1 font-mono text-xs text-[var(--muted)] max-[480px]:px-2.5 max-[480px]:py-0.5 max-[480px]:text-[11px]'
+          : 'gap-2 rounded-lg px-3.5 py-2 text-[13.5px] max-[480px]:px-3 max-[480px]:py-1.5 max-[480px]:text-xs',
       )}
     >
       {'brand' in tag ? (

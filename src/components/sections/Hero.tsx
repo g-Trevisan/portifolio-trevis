@@ -8,7 +8,7 @@ export function Hero() {
   return (
     <section
       id="inicio"
-      className="relative overflow-hidden py-[176px] pb-[120px] max-[760px]:py-[136px] max-[760px]:pb-[88px]"
+      className="relative overflow-hidden py-[176px] pb-[120px] max-[760px]:pt-[118px] max-[760px]:pb-[72px] max-[480px]:pt-[100px] max-[480px]:pb-16"
       data-screen-label="Hero"
       aria-labelledby="hero-title"
     >
@@ -18,7 +18,7 @@ export function Hero() {
       />
 
       <div className={cn(sectionShell, 'relative flex flex-col items-start gap-7')}>
-        <h1 id="hero-title" className="m-0 max-w-[900px] text-[76px] font-bold leading-[1.05] tracking-normal text-balance max-[900px]:text-[58px] max-[480px]:text-[42px]">
+        <h1 id="hero-title" className="m-0 max-w-[900px] text-[76px] font-bold leading-[1.05] tracking-normal text-balance max-[900px]:text-[58px] max-[480px]:text-[38px]">
           Desenvolvedor Web Fullstack.
         </h1>
         <p className="m-0 max-w-[620px] text-lg leading-[1.65] text-[var(--muted)] text-pretty max-[480px]:text-base">

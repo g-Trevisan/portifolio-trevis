@@ -27,8 +27,8 @@ export const SECTION_IDS = [
 export const THEME_OPTIONS: ThemeOption[] = [
   { id: "claro", label: "Claro", icon: "sun" },
   { id: "escuro", label: "Escuro", icon: "moon" },
-  { id: "amoled", label: "AMOLED", icon: "smartphone" },
-  { id: "liquido", label: "Translúcido", icon: "droplet" },
+  { id: "amoled", label: "AMOLED", icon: "circle-off" },
+  { id: "liquido", label: "Translúcido", icon: "layers" },
 ];
 
 export const NAV_SECTIONS: NavSection[] = [

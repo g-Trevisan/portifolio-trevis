@@ -62,7 +62,7 @@ export function Contact() {
   return (
     <Section id="contato" label="Contato" className="pb-20 max-[760px]:pb-16">
       <div
-        className="grid grid-cols-[1fr_1.1fr] items-start gap-16 max-[900px]:grid-cols-1"
+        className="grid grid-cols-[1fr_1.1fr] items-start gap-16 max-[900px]:grid-cols-1 max-[900px]:gap-10 max-[560px]:gap-8"
         data-reveal="true"
       >
         <div className="flex flex-col gap-5">

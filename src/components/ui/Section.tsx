@@ -12,7 +12,7 @@ export function Section({ id, label, children, className, contained = true, ...p
   return (
     <section
       id={id}
-      className={cn('border-t border-[var(--border)] py-24 max-[760px]:py-[72px]', className)}
+      className={cn('border-t border-[var(--border)] py-24 max-[760px]:py-16 max-[480px]:py-14', className)}
       data-screen-label={label}
       aria-label={label}
       {...props}
