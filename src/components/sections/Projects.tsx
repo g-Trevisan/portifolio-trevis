@@ -36,7 +36,7 @@ function ProjectCard({ project }: { project: Project }) {
           ))}
         </div>
 
-        <div className="mt-auto flex flex-wrap items-center gap-5 pt-1 text-sm font-medium">
+        <div className="mt-auto flex w-full items-center justify-between gap-4 pt-1 text-sm font-medium">
           <ExternalLink
             href={project.liveUrl}
             className="inline-flex items-center gap-1.5 text-[var(--fg)] transition-colors hover:text-[var(--accent)]"
@@ -48,10 +48,10 @@ function ProjectCard({ project }: { project: Project }) {
           <ExternalLink
             href={project.codeUrl}
             className="inline-flex items-center gap-1.5 text-[var(--muted)] transition-colors hover:text-[var(--accent)]"
-            aria-label={`Abrir código de ${project.title} em nova aba`}
+            aria-label={`Abrir GitHub de Gustavo Trevisan em nova aba`}
           >
             <Icon name="github" size={14} />
-            Código
+            GitHub
           </ExternalLink>
         </div>
       </div>

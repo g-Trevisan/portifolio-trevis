@@ -1,5 +1,6 @@
 import profileImg from "@/assets/portfolio/foto_perfil-1783428331804.png";
 import acordaViolaImg from "@/assets/portfolio/screenshot_acorda_viola-1783428643747.png";
+import brechoDaGabiImg from "@/assets/portfolio/img-brecho.png";
 import marfecImg from "@/assets/portfolio/screenshot_brecho-1783429811238.png";
 import type {
   ContactLink,
@@ -79,6 +80,22 @@ export const PROJECTS: Project[] = [
       { label: "TypeScript", brand: "typescript" },
       { label: "Tailwind CSS", brand: "tailwindcss" },
       { label: "shadcn/ui", brand: "shadcnui" },
+    ],
+  },
+  {
+    title: "Brechó da Gabi",
+    image: brechoDaGabiImg,
+    alt: "Interface do catálogo Brechó da Gabi",
+    description:
+      "Catálogo online para brechó com vitrine pública, filtros por busca, categoria, tamanho, condição e preço, páginas de produto com SEO dinâmico, contato via WhatsApp com mensagem pré-preenchida e painel administrativo protegido para CRUD de peças e upload de imagens.",
+    liveUrl: "https://brecho-da-gabi.vercel.app/",
+    codeUrl: "https://github.com/g-Trevisan",
+    tags: [
+      { label: "Next.js", brand: "nextdotjs" },
+      { label: "TypeScript", brand: "typescript" },
+      { label: "Tailwind CSS", brand: "tailwindcss" },
+      { label: "Prisma", brand: "prisma" },
+      { label: "Cloudinary", brand: "cloudinary" },
     ],
   },
 ];
