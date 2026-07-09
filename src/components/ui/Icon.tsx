@@ -1,6 +1,8 @@
 import {
   Activity,
   ArrowRight,
+  Briefcase,
+  CalendarDays,
   Check,
   ChevronDown,
   Droplet,
@@ -26,6 +28,8 @@ type IconProps = {
 
 const iconMap: Record<Exclude<IconName, 'github' | 'instagram' | 'linkedin' | 'whatsapp'>, LucideIcon> = {
   'arrow-right': ArrowRight,
+  briefcase: Briefcase,
+  calendar: CalendarDays,
   check: Check,
   'chevron-down': ChevronDown,
   ci: Activity,

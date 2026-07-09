@@ -1,9 +1,10 @@
-import profileImg from "@/assets/portfolio/foto_perfil-1783428331804.png";
-import acordaViolaImg from "@/assets/portfolio/screenshot_acorda_viola-1783428643747.png";
-import brechoDaGabiImg from "@/assets/portfolio/img-brecho.png";
-import marfecImg from "@/assets/portfolio/screenshot_brecho-1783429811238.png";
+import profileImg from "@/assets/portfolio/foto_perfil.webp";
+import acordaViolaImg from "@/assets/portfolio/screenshot_acorda_viola.webp";
+import brechoDaGabiImg from "@/assets/portfolio/img-brecho.webp";
+import marfecImg from "@/assets/portfolio/screenshot_marfec.webp";
 import type {
   ContactLink,
+  ExperienceItem,
   NavSection,
   Project,
   SectionId,
@@ -13,9 +14,11 @@ import type {
 
 export const ACCENT_COLOR = "#34d399";
 export const WHATSAPP_URL = "https://wa.me/5554996006674";
+export const LINKEDIN_URL = "https://www.linkedin.com/in/gustavo-trevisan-262117208/";
 export const SECTION_IDS = [
   "inicio",
   "sobre",
+  "experiencia",
   "projetos",
   "skills",
   "contato",
@@ -30,6 +33,7 @@ export const THEME_OPTIONS: ThemeOption[] = [
 
 export const NAV_SECTIONS: NavSection[] = [
   { id: "sobre", label: "Sobre" },
+  { id: "experiencia", label: "Experiência" },
   { id: "projetos", label: "Projetos" },
   { id: "skills", label: "Skills" },
   { id: "contato", label: "Contato" },
@@ -100,6 +104,37 @@ export const PROJECTS: Project[] = [
   },
 ];
 
+export const EXPERIENCE: ExperienceItem[] = [
+  {
+    company: "Windel Sistemas Ltda",
+    employmentType: "Tempo integral",
+    location: "Caxias do Sul, Rio Grande do Sul, Brasil",
+    roles: [
+      {
+        title: "Desenvolvedor Web",
+        startDate: "2024-11",
+        mode: "Presencial",
+        description: [
+          "Desenvolvimento de interfaces web modernas e responsivas utilizando React, Next.js, TypeScript, shadcn/ui e Tailwind CSS aplicados ao ecossistema completo de CRM.",
+          "Atuação com foco em UX para otimizar a experiência do usuário em fluxos usados por equipes internas e clientes.",
+        ],
+        competencies: ["GitHub", "GitFlow", "React", "Next.js", "TypeScript", "Tailwind CSS", "Prisma", "Shadcn/ui"],
+      },
+      {
+        title: "Suporte técnico",
+        startDate: "2022-11",
+        endDate: "2024-11",
+        mode: "Presencial",
+        description: [
+          "Atendimento e auxílio remoto a clientes via acesso remoto e ligação telefônica, com suporte direto na utilização do sistema e emissão de documentos fiscais.",
+          "Geração e verificação do SPED Fiscal e aplicação de SQL para análise de dados e produção de relatórios personalizados sob demanda.",
+        ],
+        competencies: ["SQL", "Suporte ao cliente", "ERP Fiscal", "Tributação", "SPED Fiscal", "Relatórios"],
+      },
+    ],
+  },
+];
+
 export const SKILL_GROUPS: SkillGroup[] = [
   {
     title: "Front-end",
@@ -148,7 +183,7 @@ export const CONTACT_LINKS: ContactLink[] = [
   },
   {
     label: "linkedin.com/in/gustavo-trevisan",
-    href: "https://www.linkedin.com/in/gustavo-trevisan-262117208/",
+    href: LINKEDIN_URL,
     icon: "linkedin",
   },
   {

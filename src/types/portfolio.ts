@@ -1,9 +1,11 @@
 export type Theme = 'escuro' | 'amoled' | 'claro' | 'liquido'
 
-export type SectionId = 'inicio' | 'sobre' | 'projetos' | 'skills' | 'contato'
+export type SectionId = 'inicio' | 'sobre' | 'experiencia' | 'projetos' | 'skills' | 'contato'
 
 export type IconName =
   | 'arrow-right'
+  | 'briefcase'
+  | 'calendar'
   | 'check'
   | 'chevron-down'
   | 'ci'
@@ -64,6 +66,22 @@ export type Project = {
   liveUrl: string
   codeUrl: string
   tags: SkillTag[]
+}
+
+export type ExperienceRole = {
+  title: string
+  startDate: string
+  endDate?: string
+  mode: string
+  description: string[]
+  competencies: string[]
+}
+
+export type ExperienceItem = {
+  company: string
+  employmentType: string
+  location: string
+  roles: ExperienceRole[]
 }
 
 export type SkillGroup = {

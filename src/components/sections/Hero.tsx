@@ -1,4 +1,4 @@
-import { HERO_STACK } from '@/data/portfolio'
+import { HERO_STACK, LINKEDIN_URL } from '@/data/portfolio'
 import { cn } from '@/lib/cn'
 import { sectionShell } from '@/lib/styles'
 import { ButtonLink } from '@/components/ui/Button'
@@ -34,6 +34,16 @@ export function Hero() {
           </ButtonLink>
           <ButtonLink href="#contato" variant="secondary" className="max-[480px]:w-full">
             Entrar em contato
+          </ButtonLink>
+          <ButtonLink
+            href={LINKEDIN_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            variant="secondary"
+            className="max-[480px]:w-full"
+          >
+            <Icon name="linkedin" size={16} />
+            Ver LinkedIn
           </ButtonLink>
         </div>
 

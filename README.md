@@ -44,6 +44,22 @@ Execute a verificação de lint:
 npm run lint
 ```
 
+## Variáveis de ambiente
+
+O formulário de contato usa Web3Forms. Crie um arquivo `.env.local` com base em `.env.example`:
+
+```bash
+cp .env.example .env.local
+```
+
+Preencha a chave pública de envio:
+
+```env
+VITE_WEB3FORMS_ACCESS_KEY="sua-chave-do-web3forms"
+```
+
+Sem essa variável, o formulário permanece visível, mas exibe uma mensagem informando que o envio ainda não está configurado.
+
 ## Hospedagem e domínio
 
 O projeto está hospedado na Vercel e usa o domínio personalizado `g-trevisan.com.br`.
@@ -67,7 +83,7 @@ O projeto está hospedado na Vercel e usa o domínio personalizado `g-trevisan.c
 │   │   ├── layout/
 │   │   │   └── Header, Footer e botão de WhatsApp
 │   │   ├── sections/
-│   │   │   └── Hero, About, Projects, Skills e Contact
+│   │   │   └── Hero, About, Experience, Projects, Skills e Contact
 │   │   └── ui/
 │   │       └── componentes reutilizáveis de interface
 │   ├── data/
@@ -81,6 +97,7 @@ O projeto está hospedado na Vercel e usa o domínio personalizado `g-trevisan.c
 │   ├── App.tsx
 │   ├── index.css
 │   └── main.tsx
+├── .env.example
 ├── index.html
 ├── vite.config.ts
 └── package.json
@@ -92,14 +109,15 @@ A maior parte do conteúdo editável fica centralizada em `src/data/portfolio.ts
 
 - `PROFILE`: nome, localização e imagem principal.
 - `ABOUT_PARAGRAPHS`: textos da seção "Sobre".
-- `PROJECTS`: projetos exibidos, imagens, descrições, links e tags.
+- `EXPERIENCE`: experiência profissional, cargos, períodos, descrições e competências.
+- `PROJECTS`: projetos exibidos, imagens, descrições, destaques, links e tags.
 - `SKILL_GROUPS`: grupos de habilidades e tecnologias.
 - `CONTACT_LINKS`: e-mail, GitHub, LinkedIn, Instagram e outros contatos.
 - `WHATSAPP_URL`: link usado no botão flutuante de WhatsApp.
 - `THEME_OPTIONS`: opções exibidas no seletor de tema.
 - `NAV_SECTIONS` e `SECTION_IDS`: seções usadas pela navegação e pelo destaque de seção ativa.
 
-As imagens importadas nesse arquivo ficam em `src/assets/portfolio/`.
+As imagens importadas nesse arquivo ficam em `src/assets/portfolio/`. As versões usadas pela aplicação estão em WebP para reduzir o tamanho do build.
 
 ## Temas e estilos
 
@@ -121,6 +139,7 @@ O projeto usa Tailwind CSS via plugin do Vite e alias `@` apontando para `src`, 
 - `src/components/layout/WhatsAppButton.tsx`: botão flutuante de contato.
 - `src/components/sections/Hero.tsx`: primeira dobra do portfólio.
 - `src/components/sections/About.tsx`: resumo profissional.
+- `src/components/sections/Experience.tsx`: linha do tempo profissional.
 - `src/components/sections/Projects.tsx`: cards de projetos.
 - `src/components/sections/Skills.tsx`: grupos de habilidades.
 - `src/components/sections/Contact.tsx`: links de contato.
